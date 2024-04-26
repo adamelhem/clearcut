@@ -68,13 +68,11 @@ namespace ClearCut.ModelView
         {
             search = "";
             var testLines = dataRecords.ToList();
-            var testLinesList = new TestLines(testLines);
-            TestLines = new ObservableCollection<TestLine>(testLines.AsParallel().Where(o => o.Prediction));
-      
-            MaxXY = testLinesList.GetMaxXY().ToString();
-            AverageXY = testLinesList.GetAverageXY().ToString();
-            SumXY = testLinesList.GetSumXY().ToString();
-            MinXY = testLinesList.GetMinXY().ToString();
+            var trueTestLinesList = new TestLines(testLines.AsParallel().Where(o => o.Prediction).ToList());
+            MaxXY = trueTestLinesList.GetMaxXY().ToString();
+            AverageXY = trueTestLinesList.GetAverageXY().ToString();
+            SumXY = trueTestLinesList.GetSumXY().ToString();
+            MinXY = trueTestLinesList.GetMinXY().ToString();
         }
 
         public String MaxXY
@@ -128,8 +126,10 @@ namespace ClearCut.ModelView
         private async Task LoadDataAsync()
         {
             var csvFileHandler = new CSVFileHandler();
+            Mouse.OverrideCursor = Cursors.Wait;
             var dataRecords = await csvFileHandler.LoadDataFromSelectedZipFileFlow();
             FillData(dataRecords);
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
    
     }
