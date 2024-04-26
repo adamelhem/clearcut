@@ -4,6 +4,7 @@
 //   Created    : 26.4.2024
 #endregion
 
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
@@ -35,17 +36,22 @@ namespace ClearCut.Helpers
 
         private async Task<ICollection<TestLine>> readCSVFile(string csvFile)
         {
-            var dataWithHeader = File.ReadAllLines(csvFile);
-            var data = dataWithHeader.Skip(1).ToList();
             var testLines = new ConcurrentBag<TestLine>();
-            Parallel.ForEach(data, (line) =>
+            using (var reader = new StreamReader(csvFile))
             {
-                var lineValues = line.Split(',');
-                var x = lineValues[0];
-                var y = lineValues[1];
-                var prediction = bool.Parse(lineValues[2]);
-                testLines.Add(new TestLine(x, y, prediction));
-            });
+                var dataWithHeader = await reader.ReadToEndAsync();
+                var data = dataWithHeader.
+                         Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                         .ToList().Skip(1).ToList();
+                Parallel.ForEach(data, (line) =>
+                {
+                    var lineValues = line.Split(',');
+                    var x = lineValues[0];
+                    var y = lineValues[1];
+                    var prediction = bool.Parse(lineValues[2]);
+                    testLines.Add(new TestLine(x, y, prediction));
+                });
+            }
             return testLines.ToList();
         }
 
