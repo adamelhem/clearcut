@@ -1,5 +1,6 @@
 ﻿#region (c) 2024 Adam Melhem All right reserved
 //   Author     : Adam Melhem
+//   Email      : fm_post@hotmail.com
 //   Projet     : ClearCut
 //   Created    : 26.4.2024
 #endregion
