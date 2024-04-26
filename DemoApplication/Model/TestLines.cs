@@ -47,6 +47,10 @@ namespace ClearCut.Model
 
         internal object GetAverageXY()
         {
+            if(_testLines.Count == 0)
+            {
+                return 0;
+            }
             var xList = _testLines.AsParallel().Select(e => float.Parse(e.X)).ToList();
             var yList = _testLines.AsParallel().Select(e => float.Parse(e.Y)).ToList();
             var xSum = xList.Sum();
@@ -58,6 +62,10 @@ namespace ClearCut.Model
 
         internal float GetMaxXY()
         {
+            if (_testLines.Count == 0)
+            {
+                return 0;
+            }
             var xList = _testLines.AsParallel().Select(e => float.Parse(e.X)).ToList();
             var yList = _testLines.AsParallel().Select(e => float.Parse(e.Y)).ToList();
             var xMax = xList.Max();
@@ -68,6 +76,10 @@ namespace ClearCut.Model
 
         internal float GetMinXY()
         {
+            if (_testLines.Count == 0)
+            {
+                return 0;
+            }
             var xList = _testLines.AsParallel().Select(e => float.Parse(e.X)).ToList();
             var yList = _testLines.AsParallel().Select(e => float.Parse(e.Y)).ToList();
             var xMin = xList.Min();
@@ -77,6 +89,10 @@ namespace ClearCut.Model
 
         internal float GetSumXY()
         {
+            if (_testLines.Count == 0)
+            {
+                return 0;
+            }
             var xList = _testLines.AsParallel().Select(e => float.Parse(e.X)).ToList();
             var yList = _testLines.AsParallel().Select(e => float.Parse(e.Y)).ToList();
             var xSum = xList.Sum();

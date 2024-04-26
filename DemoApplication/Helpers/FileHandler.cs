@@ -19,7 +19,11 @@ namespace ClearCut.Helpers
             var openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = filter;
             openFileDialog.ShowDialog();
-            return new FileInfo(openFileDialog.FileName);
+            if(File.Exists(openFileDialog.FileName))
+            {
+              return new FileInfo(openFileDialog.FileName);
+            }else
+            { return null; }
         }
     }
 }

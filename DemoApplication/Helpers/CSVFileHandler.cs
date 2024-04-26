@@ -27,6 +27,10 @@ namespace ClearCut.Helpers
         public async Task<ICollection<TestLine>> LoadDataFromSelectedZipFileFlow()
         {
             var fileNamePath = this.GetOpenFileDialogPathName();
+            if (fileNamePath == null)
+            {
+                return new List<TestLine>();
+            }
             var csvFile = ExtractToDirectory(fileNamePath);
             return await readCSVFile(csvFile.FullName);
         }
