@@ -1,5 +1,3 @@
-# clearcut
-
 Home test clear cut
 
 1.	This is part of the code in a hardware device:

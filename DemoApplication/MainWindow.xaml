@@ -1,0 +1,70 @@
+﻿<Window
+    x:Class="ClearCut.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ClearCut"
+    Width="400"
+    Height="300"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Grid Margin="50,40">
+
+        <Grid
+            Grid.Row="0"
+            Margin="0,10"
+            HorizontalAlignment="Stretch">
+
+            <StackPanel
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
+
+                <StackPanel>
+                   <Button
+                    FlowDirection="LeftToRight"
+                    Width="Auto"
+                    MaxWidth="100"
+                    Margin="10,10,10,10"
+                    Padding="10"
+                    Command="{Binding LoadDataFile}"
+                    Content="Load Data File"
+                    Cursor="Hand" />
+                </StackPanel>
+                
+                <StackPanel MinWidth="100" HorizontalAlignment="Left">
+                    
+                    <Label
+                    Margin="0,0,20,0"
+                    VerticalAlignment="Bottom"
+                    Content="{Binding Path=MaxXY, UpdateSourceTrigger=PropertyChanged}"
+                    FontWeight="Bold" />
+                    
+                    <Label
+                    Margin="0,0,20,0"
+                    VerticalAlignment="Bottom"
+                    Content="{Binding Path=MinXY, UpdateSourceTrigger=PropertyChanged}"
+                    FontWeight="Bold" />
+                    
+                    <Label
+                    Margin="0,0,20,0"
+                    VerticalAlignment="Bottom"
+                    Content="{Binding Path=SumXY, UpdateSourceTrigger=PropertyChanged}"
+                    FontWeight="Bold" />
+                    
+                    <Label
+                    Margin="0,0,20,0"
+                    VerticalAlignment="Bottom"
+                    Content="{Binding Path=AverageXY, UpdateSourceTrigger=PropertyChanged}"
+                    FontWeight="Bold" />
+                    
+                </StackPanel>
+                                
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+
+</Window>
