@@ -4,10 +4,12 @@
 //   Created    : 26.4.2024
 #endregion
 
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ClearCut.Helpers
 {
@@ -21,30 +23,30 @@ namespace ClearCut.Helpers
             _tempFolder = Path.GetTempPath();
         }
 
-        public ICollection<TestLine> LoadDataFromSelectedZipFileFlow()
+        public async Task<ICollection<TestLine>> LoadDataFromSelectedZipFileFlow()
         {
             var fileNamePath = this.GetOpenFileDialogPathName();
             var csvFile = ExtractToDirectory(fileNamePath);
-            return readCSVFile(csvFile.FullName);
+            return await readCSVFile(csvFile.FullName);
         }
 
         public override FileInfo GetOpenFileDialogPathName()
              => base.GetOpenFileDialogPathName(fileFilter);
 
-        private ICollection<TestLine> readCSVFile(string csvFile)
+        private async Task<ICollection<TestLine>> readCSVFile(string csvFile)
         {
             var dataWithHeader = File.ReadAllLines(csvFile);
             var data = dataWithHeader.Skip(1).ToList();
-            var testLines = new List<TestLine>();
-            foreach (var line in data)
+            var testLines = new ConcurrentBag<TestLine>();
+            Parallel.ForEach(data, (line) =>
             {
                 var lineValues = line.Split(',');
                 var x = lineValues[0];
                 var y = lineValues[1];
                 var prediction = bool.Parse(lineValues[2]);
                 testLines.Add(new TestLine(x, y, prediction));
-            }
-            return testLines;
+            });
+            return testLines.ToList();
         }
 
         // TODO: make search mechanism to get the actual csv file name without assumbtion

@@ -128,7 +128,7 @@ namespace ClearCut.ModelView
         private async Task LoadDataAsync()
         {
             var csvFileHandler = new CSVFileHandler();
-            var dataRecords = csvFileHandler.LoadDataFromSelectedZipFileFlow();
+            var dataRecords = await csvFileHandler.LoadDataFromSelectedZipFileFlow();
             FillData(dataRecords);
         }
    

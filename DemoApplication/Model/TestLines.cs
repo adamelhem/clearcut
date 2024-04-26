@@ -29,7 +29,6 @@ namespace ClearCut.Model
 
         public void Add(TestLine item) =>
             _testLines.Add(item);
-        
 
         public void Clear() =>
             _testLines.Clear();
