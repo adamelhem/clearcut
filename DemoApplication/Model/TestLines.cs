@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace ClearCut.Model
 {
-    internal class TestLines : ICollection<TestLine>
+    internal class TestLines : ITestLines
     {
         private readonly List<TestLine> _testLines;
 
@@ -33,7 +33,7 @@ namespace ClearCut.Model
 
         public void Clear() =>
             _testLines.Clear();
-        
+
         public bool Contains(TestLine item)
             => _testLines.Contains(item);
 
@@ -48,7 +48,7 @@ namespace ClearCut.Model
 
         internal object GetAverageXY()
         {
-            if(_testLines.Count == 0)
+            if (_testLines.Count == 0)
             {
                 return 0;
             }
@@ -102,6 +102,6 @@ namespace ClearCut.Model
         }
 
         IEnumerator IEnumerable.GetEnumerator()
-           => _testLines.GetEnumerator(); 
+           => _testLines.GetEnumerator();
     }
 }

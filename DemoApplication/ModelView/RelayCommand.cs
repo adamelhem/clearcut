@@ -1,8 +1,6 @@
 ﻿// microsoft class example code
 
 using System;
-using System.Windows;
-using System.Windows.Input;
 namespace ClearCut.ModelView
 {
     /// <summary>
@@ -12,7 +10,7 @@ namespace ClearCut.ModelView
     /// RaiseCanExecuteChanged needs to be called whenever
     /// CanExecute is expected to return a different value.
     /// </summary>
-    public class RelayCommand : ICommand
+    public class RelayCommand : IRelayCommand
     {
         private readonly Action _execute;
         private readonly Func<bool> _canExecute;

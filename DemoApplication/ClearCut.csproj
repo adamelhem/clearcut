@@ -86,7 +86,12 @@
     </Compile>
     <Compile Include="Helpers\CSVFileHandler.cs" />
     <Compile Include="Helpers\FileHandler.cs" />
+    <Compile Include="Helpers\ICSVFileHandler.cs" />
+    <Compile Include="Helpers\IFileHandler.cs" />
+    <Compile Include="ModelView\IModelView.cs" />
+    <Compile Include="ModelView\IRelayCommand.cs" />
     <Compile Include="ModelView\RelayCommand.cs" />
+    <Compile Include="Model\ITestLines.cs" />
     <Compile Include="Model\TestLine.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

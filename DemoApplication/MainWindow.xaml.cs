@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClearCut.ModelView;
+using System;
 using System.Diagnostics;
 using System.Windows;
 
@@ -11,7 +12,7 @@ namespace ClearCut
     {
         #region Public Constructors
 
-        public MainWindow()
+        public MainWindow(IModelView modelView)
         {
             InitializeComponent();
 
@@ -22,7 +23,7 @@ namespace ClearCut
                     AppDomain.CurrentDomain.FriendlyName, e.Exception.Message);
             };
 #endif
-            DataContext = new ModelView.ModelView();
+            DataContext = modelView; 
         }
 
         #endregion Public Constructors

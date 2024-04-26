@@ -17,7 +17,7 @@ using System.Windows.Input;
 
 namespace ClearCut.ModelView
 {
-    public class ModelView : INotifyPropertyChanged
+    public class ModelView : IModelView
     {
         #region Public Constructors
 
@@ -32,8 +32,8 @@ namespace ClearCut.ModelView
         /// <summary>
         ///     Refresh all
         /// </summary>
-        public ICommand LoadDataFile 
-            => new RelayCommand(async ()=> await LoadDataAsync());
+        public ICommand LoadDataFile
+            => new RelayCommand(async () => await LoadDataAsync());
 
         #endregion Command
 
@@ -52,7 +52,6 @@ namespace ClearCut.ModelView
         #region Public Properties
 
         public ObservableCollection<TestLine> TestLines { get; set; }
-        public ObservableCollection<TestLine> FilteredList { get; set; }
 
         #endregion Public Properties
 
@@ -132,6 +131,6 @@ namespace ClearCut.ModelView
             FillData(dataRecords);
             Mouse.OverrideCursor = Cursors.Arrow;
         }
-   
+
     }
 }

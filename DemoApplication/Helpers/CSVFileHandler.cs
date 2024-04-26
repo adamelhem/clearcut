@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace ClearCut.Helpers
 {
-    internal class CSVFileHandler : FileHandler
+    internal class CSVFileHandler : FileHandler, ICSVFileHandler
     {
         const string fileFilter = "ZIP files (*.zip)|*.zip|CSV files (*.csv)|*.csv";
         readonly string _tempFolder;
