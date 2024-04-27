@@ -16,8 +16,8 @@ namespace ClearCut
         {
             var kernel = new StandardKernel();
             var appVM = kernel.Get<ModelView.ModelView>();
-            //kernel.Bind<ModelView.IModelView>().To<ModelView.ModelView>();
-            MainWindow = new MainWindow(new ModelView.ModelView());
+            kernel.Bind<ModelView.IModelView>().To<ModelView.ModelView>();
+            MainWindow = kernel.Get<MainWindow>();
             MainWindow.DataContext = appVM;
             MainWindow.Show();
         }
