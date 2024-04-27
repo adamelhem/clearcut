@@ -10,7 +10,7 @@ using System.IO;
 
 namespace ClearCut.Helpers
 {
-    internal abstract class FileHandler : IFileHandler
+    public abstract class FileHandler : IFileHandler
     {
         public virtual FileInfo GetOpenFileDialogPathName()
             => this.GetOpenFileDialogPathName("*.*");

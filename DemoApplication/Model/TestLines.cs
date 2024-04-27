@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace ClearCut.Model
 {
-    internal class TestLines : ITestLines
+    public class TestLines : ITestLines
     {
         private readonly List<TestLine> _testLines;
 
@@ -46,7 +46,7 @@ namespace ClearCut.Model
         public bool Remove(TestLine item)
             => _testLines.Remove(item);
 
-        internal object GetAverageXY()
+        public object GetAverageXY()
         {
             if (_testLines.Count == 0)
             {
@@ -61,7 +61,7 @@ namespace ClearCut.Model
             return ((xSum + ySum) / (xCount + yCount));
         }
 
-        internal float GetMaxXY()
+        public float GetMaxXY()
         {
             if (_testLines.Count == 0)
             {
@@ -75,7 +75,7 @@ namespace ClearCut.Model
             return maxXY;
         }
 
-        internal float GetMinXY()
+        public float GetMinXY()
         {
             if (_testLines.Count == 0)
             {
@@ -88,7 +88,7 @@ namespace ClearCut.Model
             return ((xMin > yMin) ? xMin : yMin);
         }
 
-        internal float GetSumXY()
+        public float GetSumXY()
         {
             if (_testLines.Count == 0)
             {

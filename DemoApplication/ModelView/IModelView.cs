@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using ClearCut.Model;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -12,5 +13,6 @@ namespace ClearCut.ModelView
         string MinXY { get; set; }
         string SumXY { get; set; }
         ObservableCollection<TestLine> TestLines { get; set; }
+
     }
 }

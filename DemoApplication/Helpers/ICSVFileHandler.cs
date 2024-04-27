@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using ClearCut.Model;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
 namespace ClearCut.Helpers
 {
-    internal interface ICSVFileHandler
+    public interface ICSVFileHandler
     {
         FileInfo GetOpenFileDialogPathName();
         Task<ICollection<TestLine>> LoadDataFromSelectedZipFileFlow();

@@ -5,6 +5,7 @@
 //   Created    : 26.4.2024
 #endregion
 
+using ClearCut.Model;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace ClearCut.Helpers
 {
-    internal class CSVFileHandler : FileHandler, ICSVFileHandler
+    public class CSVFileHandler : FileHandler, ICSVFileHandler
     {
         const string fileFilter = "ZIP files (*.zip)|*.zip|CSV files (*.csv)|*.csv";
         readonly string _tempFolder;

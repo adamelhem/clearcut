@@ -5,7 +5,7 @@
 //   Created    : 26.4.2024
 #endregion
 
-namespace ClearCut
+namespace ClearCut.Model
 {
     public class TestLine
     {

@@ -2,7 +2,7 @@
 
 namespace ClearCut.Model
 {
-    internal interface ITestLines : ICollection<TestLine>
+    public interface ITestLines : ICollection<TestLine>
     {  
     }
 }

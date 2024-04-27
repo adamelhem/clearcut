@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ClearCut.ModelView
@@ -125,11 +126,17 @@ namespace ClearCut.ModelView
         /// <param name="obj"></param>
         private async Task LoadDataAsync()
         {
-            var csvFileHandler = new CSVFileHandler();
-            Mouse.OverrideCursor = Cursors.Wait;
-            var dataRecords = await csvFileHandler.LoadDataFromSelectedZipFileFlow();
-            FillData(dataRecords);
-            Mouse.OverrideCursor = Cursors.Arrow;
+            try
+            {
+                var csvFileHandler = new CSVFileHandler();
+                Mouse.OverrideCursor = Cursors.Wait;
+                var dataRecords = await csvFileHandler.LoadDataFromSelectedZipFileFlow();
+                FillData(dataRecords);
+                Mouse.OverrideCursor = Cursors.Arrow;
+            } catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!");
+            }
         }
 
     }
