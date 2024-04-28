@@ -22,8 +22,9 @@ namespace ClearCut.ModelView
     {
         #region Public Constructors
 
-        public ModelView()
+        public ModelView(ILogger logger )
         {
+            _logger = logger;
         }
 
         #endregion Public Constructors
@@ -40,13 +41,12 @@ namespace ClearCut.ModelView
 
         #region Private Fields
 
-        private ICollectionView collView;
-
         private string search;
         private string maxXY;
         private string minXY;
         private string averageXY;
         private string sumXY;
+        private readonly ILogger _logger;
 
         #endregion Private Fields
 
@@ -133,9 +133,11 @@ namespace ClearCut.ModelView
                 var dataRecords = await csvFileHandler.LoadDataFromSelectedZipFileFlow();
                 FillData(dataRecords);
                 Mouse.OverrideCursor = Cursors.Arrow;
-            } catch (Exception)
+            } catch (Exception ex)
             {
-                MessageBox.Show("Something went wrong!");
+                var msg = "Something went wrong!";
+                _logger.LogError(msg, ex);
+                MessageBox.Show(msg);
             }
         }
 

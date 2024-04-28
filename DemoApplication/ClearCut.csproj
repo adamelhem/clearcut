@@ -88,6 +88,8 @@
     <Compile Include="Helpers\FileHandler.cs" />
     <Compile Include="Helpers\ICSVFileHandler.cs" />
     <Compile Include="Helpers\IFileHandler.cs" />
+    <Compile Include="Helpers\ILogger.cs" />
+    <Compile Include="Helpers\Logger.cs" />
     <Compile Include="ModelView\IModelView.cs" />
     <Compile Include="ModelView\IRelayCommand.cs" />
     <Compile Include="ModelView\RelayCommand.cs" />
